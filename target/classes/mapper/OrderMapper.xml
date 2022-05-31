@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scau.shop.mapper.OrderMapper">
+    <insert id="insertOrder" useGeneratedKeys="true" keyProperty="oid">
+        INSERT INTO t_order (uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address,
+                             total_price, status, order_time, pay_time, created_time,
+                             modified_time)
+        VALUES (#{uid}, #{recvName}, #{recvPhone}, #{recvProvince}, #{recvCity}, #{recvArea},
+                #{recvAddress}, #{totalPrice}, #{status}, #{orderTime}, #{payTime},
+                #{createdTime}, #{modifiedTime})
+    </insert>
+
+    <insert id="insertOrderItem" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order_item (oid, pid, title, image, price, num,
+                                  created_time, modified_time, status, uid)
+        VALUES (#{oid}, #{pid}, #{title}, #{image}, #{price}, #{num},
+                #{createdTime}, #{modifiedTime}, #{status}, #{uid})
+    </insert>
+
+    <select id="findAllOrderByUid" resultType="com.scau.shop.entity.Order">
+        select *
+        from t_order
+        where uid = #{uid}
+    </select>
+
+    <select id="findOrderItemByOid" resultType="com.scau.shop.entity.OrderItem">
+        select *
+        from t_order_item
+        where oid = #{oid}
+    </select>
+
+    <update id="confirmReceipt">
+        update t_order_item
+        set status        = 2,
+            modified_time = #{modifiedTime}
+        where id = #{id}
+    </update>
+
+    <update id="confirmPay">
+        update t_order
+        set pay_time = #{paytime}
+        where oid = #{oid}
+    </update>
+
+    <update id="changeStatusOfItem">
+        update t_order_item
+        set status = 1
+        where oid = #{oid}
+    </update>
+
+    <update id="changeStatusOfOrder">
+        update t_order
+        set status = 1
+        where oid = #{oid}
+    </update>
+
+    <select id="findNoReceiveOrderItem" resultType="com.scau.shop.entity.OrderItem">
+        select *
+        from t_order_item
+        where uid = #{uid}
+          and status = 1
+    </select>
+
+    <select id="findNoCommentOrderItem" resultType="com.scau.shop.entity.OrderItem">
+        select *
+        from t_order_item
+        where uid = #{uid}
+          and status = 2
+    </select>
+
+    <select id="getOrderByOid" resultType="com.scau.shop.entity.Order">
+        select *
+        from t_order
+        where oid = #{oid}
+    </select>
+
+    <update id="setCommentStatus">
+        update t_order_item
+        set status = 4
+        where id = #{id}
+    </update>
+
+    <select id="findFinishedOrderItem" resultType="com.scau.shop.entity.OrderItem">
+        select *
+        from t_order_item
+        where uid = #{uid}
+          and status = 4
+    </select>
+</mapper>

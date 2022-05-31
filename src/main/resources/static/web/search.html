@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!--edge浏览器H5兼容设置-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--360浏览器H5兼容设置-->
+	<meta name="renderer" content="webkit" />
+	<title>电脑商城</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--导入核心文件-->
+	<script src="../bootstrap3/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../bootstrap3/js/holder.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/search.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/imgmove.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../bootstrap3/js/bootstrap.js"></script>
+	<link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+	<!-- 字体图标 -->
+	<link rel="stylesheet" href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="../css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../css/top.css" />
+	<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+	<link rel="stylesheet" type="text/css" href="../css/search.css" />
+	<link rel="stylesheet" type="text/css" href="../css/imgmove.css" />
+
+</head>
+
+<body>
+<!--头部-->
+<header class="header">
+	<!--电脑商城logo-->
+	<div class="row">
+		<div class="col-md-3">
+			<a href="index.html">
+				<img src="../images/index/logo.png" width="80" />
+			</a>
+		</div>
+		<!--快捷选项-->
+		<div class="col-md-9 top-item">
+			<ul class="list-inline pull-right">
+				<li><a href="favorites.html"><span class="fa fa-heart"></span>&nbsp;收藏</a></li>
+				<li class="li-split">|</li>
+				<li><a href="orders.html"><span class="fa fa-file-text"></span>&nbsp;订单</a></li>
+				<li class="li-split">|</li>
+				<li><a href="cart.html"><span class="fa fa-cart-plus"></span>&nbsp;购物车</a></li>
+				<li class="li-split">|</li>
+				<li>
+					<!--下列列表按钮 ：管理-->
+					<div class="btn-group">
+						<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+							<span id="top-dropdown-btn"><span class="fa fa-gears"></span>&nbsp;管理 <span class="caret"></span></span>
+						</button>
+						<ul class="dropdown-menu top-dropdown-ul" role="menu">
+							<li><a href="password.html">修改密码</a></li>
+							<li><a href="userdata.html">个人资料</a></li>
+							<li><a href="address.html">收货管理	</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="li-split">|</li>
+				<li><a href="login.html"><span class="fa fa-user"></span>&nbsp;用户名</a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<!--导航 -->
+<!--分割导航和顶部-->
+<div class="row top-nav">
+	<div class="col-md-6">
+		<ul class="nav nav-pills">
+			<li>
+				<a href="#"></a>
+			</li>
+			<li class="active"><a href="index.html"><span class="fa fa-heart"></span></a></li>
+			<li><a href="#">秒杀</a></li>
+			<li><a href="#">优惠券</a></li>
+			<li><a href="#">电脑VIP</a></li>
+			<li><a href="#">外卖</a></li>
+			<li><a href="#">超市</a></li>
+		</ul>
+	</div>
+	<div class="col-md-6">
+		<form  class="form-inline pull-right" role="form">
+			<div class="form-group">
+				<input type="text" class="form-control" id="search"  placeholder="请输入商品名称进行搜索" >
+			</div>
+<!--			<button type="submit" id="submit" class="btn btn-default btn-lg"><span class="fa fa-search"></span></button>-->
+		</form>
+	</div>
+</div>
+<!--头部结束-->
+<!--导航结束-->
+<div  class="search_show">
+	<div class="col-md-offset-1 col-md-10"></div>
+	<div class="col-md-offset-1 col-md-10">
+		<table id="tab" class="search-table" cellspacing="200" width="100%">
+			<tbody id="search-list" class=search-body">
+			<tr>
+				<td><a href="product.html?id=10000037"><img src="../images/portal/17Lenovo)xiaoxinAir13Pro_gold/collect.png" class="img-responsive" /></a> </td>
+				<td><a href="product.html?id=10000037">联想(Lenovo)小新Air13 Pro 13.3英寸14.8mm超轻薄笔记本电脑金色</a> </td>
+				<td>¥<span id="goodsPrice1">6439</span></td>
+			</tr>
+			<tr>
+				<td><a href="product.html?id=10000043"><img src="../images/portal/22_LEXON_LNE6025B06T/collect.png" class="img-responsive" /></a> </td>
+				<td><a href="product.html?id=10000043">乐尚书包 电脑包 bag黑色</a> </td>
+				<td>¥<span id="goodsPrice2">89</span></td>
+			</tr>
+			<tr>
+				<td><a href="product.html?id=10000038"><img src="../images/portal/17Lenovo)xiaoxinAir13Pro_silvery/collect.png" class="img-responsive" /></a> </td>
+				<td><a href="product.html?id=10000038">联想(Lenovo)小新Air13 Pro 13.3英寸14.8mm超轻薄笔记本电脑银色</a> </td>
+				<td>¥<span id="goodsPrice3">6439</span></td>
+
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!--循环遍历信息-->
+
+
+<!--页脚开始-->
+<footer class="footer">
+	<!-- 品质保障，私人定制等-->
+	<div class="text-center rights container">
+		<div class="col-md-offset-2 col-md-2">
+			<span class="fa fa-diamond"></span>
+			<p>品质保障</p>
+		</div>
+		<div class="col-md-2">
+			<span class="fa fa-pencil-square-o"></span>
+			<p>私人订制</p>
+		</div>
+		<div class="col-md-2">
+			<span class="fa fa-graduation-cap"></span>
+			<p>学生特供</p>
+		</div>
+		<div class="col-md-2">
+			<span class="fa fa-thumbs-o-up"></span>
+			<p>专属特权</p>
+		</div>
+	</div>
+	<!--联系我们、下载客户端等-->
+	<div class="container beforeBottom">
+		<div class="col-md-offset-1 col-md-2">
+			<div><img src="../images/index/downlogo.png" width="80" alt="" class="footLogo" /></div>
+		</div>
+		<div class="col-md-5 callus text-center">
+			<div class="col-md-4">
+				<ul>
+					<li><a href="#">买家帮助</a></li>
+					<li><a href="#">新手指南</a></li>
+					<li><a href="#">服务保障</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<ul>
+					<li><a href="#">商家帮助</a></li>
+					<li><a href="#">商家入驻</a></li>
+					<li><a href="#">商家后台</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<ul>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">关于商城</a></li>
+					<li><a href="#">联系我们</a></li>        
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<ul>
+				<li><a href="#">常见问题</a></li>
+				<li>
+					<span class="fa fa-wechat"></span>
+					<span class="fa fa-weibo"></span>
+				</li>
+			</ul>
+			                       
+		</div>
+	</div>
+</footer>
+<!--页脚结束-->
+
+<script type="text/javascript" src="../js/jquery-getUrlParam.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#search").on('keyup',function(){
+			var keywords = $(this).val().trim()
+			if(keywords.length <=0){
+				return
+			}
+			getSuggestList(keywords)
+		})
+		function getSuggestList(kw){
+			$.ajax({
+				url: "/products/search/"+kw,
+				dataType:'json',
+				type: "POST",
+				success:function(res){
+					console.log(res);
+					showSearchList(res);
+				}
+			})
+		}
+		function showSearchList(title) {
+			$("#search-list").empty();
+
+					let list = title.data;
+					console.log(list);
+					for (let i = 0; i < list.length; i++) {
+						let tr = '<tr>'
+								+ '<td><a href="product.html?id=#{id}"><img src="..#{image}collect.png" class="img-responsive" /></a></td>'
+								+ '<td><a href="product.html?id=#{id}">#{title}</a></td>'
+								+ '<td>¥<span id="price-#{id}">#{price}</span></td>'
+								+ '</tr>';
+						tr = tr.replace(/#{image}/g, list[i].image);
+						tr = tr.replace(/#{title}/g, list[i].title);
+						tr = tr.replace(/#{price}/g, list[i].price);
+						tr = tr.replace(/#{id}/g, list[i].id);
+
+						$("#search-list").append(tr);
+
+					}
+				}
+
+
+
+	})
+</script>
+
+
+</body>
+</html>

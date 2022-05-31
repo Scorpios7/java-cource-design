@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scau.shop.mapper.UserMapper">
+
+    <insert id="register" useGeneratedKeys="true" keyProperty="uid">
+        insert into t_user(username, password, salt, phone, email, gender, avatar,
+                           is_delete, created_time, modified_time)
+        values (#{username}, #{password}, #{salt}, #{phone}, #{email}, #{gender}, #{avatar},
+                #{isDelete}, #{createdTime}, #{modifiedTime})
+    </insert>
+
+    <select id="findByUserName" resultType="com.scau.shop.entity.User">
+        select *
+        from t_user
+        where username = #{username}
+    </select>
+
+    <update id="changePassword">
+        update t_user
+        set password=#{password},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <select id="findByUid" resultType="com.scau.shop.entity.User">
+        select *
+        from t_user
+        where uid = #{uid}
+    </select>
+
+    <update id="updateInfo">
+        update t_user
+        set phone=#{phone},
+            gender=#{gender},
+            email=#{email},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+</mapper>

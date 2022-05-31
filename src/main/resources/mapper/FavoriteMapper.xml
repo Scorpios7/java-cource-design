@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scau.shop.mapper.FavoriteMapper">
+    <insert id="addFavorite" useGeneratedKeys="true" keyProperty="fid">
+        insert into t_favorite(uid, pid, created_time, modified_time)
+        values (#{uid}, #{pid}, #{createdTime}, #{modifiedTime})
+    </insert>
+
+    <select id="findByUidAndPid" resultType="com.scau.shop.entity.Favorite">
+        select *
+        from t_favorite
+        where uid = #{uid}
+          and pid = #{pid}
+    </select>
+
+    <select id="findVoByuid" resultType="com.scau.shop.vo.FavoriteVO">
+        select fid, uid, pid, t_product.price, t_product.title, t_product.image
+        from t_favorite
+                 left join t_product on t_favorite.pid = t_product.id
+        where uid = #{uid}
+    </select>
+
+    <delete id="cancelByFid">
+        delete from t_favorite where fid = #{fid}
+    </delete>
+</mapper>

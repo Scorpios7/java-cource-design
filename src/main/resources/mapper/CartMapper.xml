@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scau.shop.mapper.CartMapper">
+    <insert id="addCart" useGeneratedKeys="true" keyProperty="cid">
+        insert into t_cart(uid, pid, num, created_time, modified_time)
+        values (#{uid}, #{pid}, #{num}, #{createdTime}, #{modifiedTime})
+    </insert>
+
+    <update id="updateNumByCid">
+        update t_cart
+        set num=#{num},
+            modified_time=#{modifiedTime}
+        where cid = #{cid}
+    </update>
+
+    <select id="findCartByUidAndPid" resultType="com.scau.shop.entity.Cart">
+        select *
+        from t_cart
+        where uid = #{uid}
+          and pid = #{pid}
+    </select>
+
+    <select id="findVOByUid" resultType="com.scau.shop.vo.CartVO">
+        select cid, uid, pid, t_product.price as realPrice, t_cart.num, t_product.title, t_product.image
+        from t_cart
+                 left join t_product on t_cart.pid = t_product.id
+        where uid = #{uid}
+        order by t_cart.created_time desc
+    </select>
+
+    <select id="findByCid" resultType="com.scau.shop.entity.Cart">
+        select *
+        from t_cart
+        where cid = #{cid}
+    </select>
+
+    <select id="findVOByCids" resultType="com.scau.shop.vo.CartVO">
+        select cid, uid, pid, t_product.price as realPrice, t_cart.num, t_product.title, t_product.image
+        from t_cart
+        left join t_product on t_cart.pid = t_product.id
+        where cid in (<foreach collection="array" item="cid" separator=",">
+        #{cid}
+    </foreach> )
+        order by t_cart.created_time desc
+    </select>
+
+    <delete id="deleteByCid">
+        delete
+        from t_cart
+        where cid = #{cid}
+    </delete>
+</mapper>

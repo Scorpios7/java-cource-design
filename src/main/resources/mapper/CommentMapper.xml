@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scau.shop.mapper.CommentMapper">
+    <insert id="addComment" useGeneratedKeys="true" keyProperty="cid">
+        insert into t_comment( pid, username, text, created_time)
+        values (#{pid}, #{username}, #{text}, #{createdTime})
+    </insert>
+
+    <select id="showComment" resultType="com.scau.shop.entity.Comment">
+            select *
+            from t_comment
+            where pid = #{pid}
+    </select>
+
+</mapper>
